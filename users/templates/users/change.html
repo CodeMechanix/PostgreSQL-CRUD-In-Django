@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content_header %}
+
+    {% with headings='Change User' %}
+        {{ block.super }}
+    {% endwith %}
+
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel pages">
+
+                    <div class="panel-heading  clearfix">
+                        <h3 class="panel-title">
+                            <a href="{% url 'users:index' %}" class="btn btn-primary btn-panel "><i
+                                    class="fa fa-users"></i> Users List </a>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{% url 'users:change' user.id %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name" class="control-label">Name <sup
+                                                class="text-danger">*</sup></label>
+                                        {{ forms.name }}
+                                        <span class="text-info">Length will be minimum two Characters</span>
+                                        {{ forms.name.errors }}
+                                    </div>
+                                </div>
+                            </div>
+                            {#                            <div class="row">#}
+                            {#                                <div class="col-sm-6">#}
+                            {#                                    <div class="form-group">#}
+                            {#                                        <label for="email" class="control-label">Email <sup class="text-danger">*</sup></label>#}
+                            {#                                        {{ forms.email }}#}
+                            {#                                        {{ forms.email.errors }}#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="password" class="control-label">Password <sup
+                                                class="text-danger">*</sup></label>
+                                        {{ forms.password }}
+                                        <span class="text-info">Minimum eight characters, at least one letter and one number</span>
+                                        {{ forms.password.errors }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-success">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+

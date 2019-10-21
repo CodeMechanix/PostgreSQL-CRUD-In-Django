@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load  static %}
+
+{% block extrastyles %}
+    <link rel="stylesheet" type="text/css" href="{% static '/vendors/datatables/css/dataTables.bootstrap.css' %}"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/custom_css/datatables_custom.css' %}">
+
+{% endblock %}
+
+{% block content_header %}
+
+    {% with headings='Users List' %}
+        {{ block.super }}
+    {% endwith %}
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel pages">
+                    <div class="panel-heading  clearfix">
+                        <h3 class="panel-title">
+                            <a href="{% url 'users:add' %}" class="btn btn-primary btn-panel "><i
+                                    class="fa fa-user"></i> Add User </a>
+                        </h3>
+                    </div>
+                    <div class="panel-body table-responsive">
+                        <table class="table table-striped table-bordered" id="example">
+                            <thead>
+                            <tr>
+                                <th style="width:25%">Name</th>
+                                <th style="width:25%">Email</th>
+                                <th style="width:15%">Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if users is not None %}
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{ user.name }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>
+                                            {% if user.is_active is True %}
+                                                <span class="badge badge-success">ACTIVE</span>
+                                            {% else %}
+                                                <span class="badge badge-warning">DISABLED</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'users:change' user.id %}" class="btn btn-info btn-xs">
+                                                <span class="fa fa-fw ti-pencil"></span>
+                                            </a>
+                                            <a href="{% url 'users:delete' user.id %}" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-xs">
+                                                <span class="fa fa-fw ti-trash"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block extrascripts %}
+
+    <script type="text/javascript" src="{% static '/vendors/datatables/js/jquery.dataTables.js' %}"></script>
+    <script type="text/javascript" src="{% static '/vendors/datatables/js/dataTables.bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static '/js/custom_js/datatables_custom.js' %}"></script>
+
+{% endblock %}

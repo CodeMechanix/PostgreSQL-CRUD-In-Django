@@ -1,0 +1,59 @@
+<!-- header logo: style can be found in header-->
+{% load static %}
+<header class="header">
+    <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="logo">
+            <!-- Add the class icon to your logo image or logo icon to add the margining -->
+            <h2 style="margin: 5px 0px 0px 0px; color: #848282">CRUD</h2>
+        </a>
+        <!-- Header Navbar: style can be found in header-->
+        <!-- Sidebar toggle button-->
+        <div>
+            <a href="javascript:void(0)" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button"> <i
+                    class="fa fa-fw ti-menu"></i>
+            </a>
+        </div>
+        <!-- Sidebar toggle button-->
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+                <!-- User Account: style can be found in dropdown-->
+                <li class="dropdown user user-menu">
+                    <a href="javascript:void(0)" class="dropdown-toggle padding-user" data-toggle="dropdown">
+                        <img src="{% static '/img/original.jpg' %}" width="35" class="img-circle img-responsive pull-left"
+                             height="35" alt="Image">
+                        <div class="riot">
+                            <div>
+                                Hasan
+                                <span>
+                                        <i class="caret"></i>
+                                    </span>
+                            </div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu">
+                          
+                        <!-- Menu Footer-->
+                        
+                        <li class="user-footer">
+                            <p></p>
+                            <a href="#">
+                                <i class="fa fa-fw ti-key"></i>
+                                Change Password
+                            </a>
+                            
+                        </li>
+                        <li class="user-footer">
+                            <p></p>
+                            <a href="#">
+                                <i class="fa fa-fw ti-shift-right"></i>
+                                Logout
+                            </a>
+                            
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
